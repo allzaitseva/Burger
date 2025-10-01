@@ -81,7 +81,7 @@ export default function App() {
             <input
               type='email'
               id='email'
-              class='mt-10 lg:mt-13.5 w-[250px] h-[40px] -ml-51 bg-gray-50 border border-gray-300 text-orange-700/60 text-sm rounded-lg p-2.5'
+              class='mt-10 lg:mt-13.5 w-[250px] h-[40px] -ml-51 bg-gray-50 border-gray-300 text-orange-700/60 text-sm rounded-lg p-2.5'
               placeholder='Enter your e-mail...'
             />
           </div>

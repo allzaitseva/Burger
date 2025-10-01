@@ -66,7 +66,7 @@ export default function Navbar() {
 
         <aside
           className={[
-            "absolute inset-y-0 right-0 w-72 max-w-[85%] max-h-80 bg-[#FF9131] shadow-xl rounded-md",
+            "absolute inset-y-0 right-0 w-72 max-w-[85%] h-[50%] bg-[#FF9131] shadow-xl rounded-md",
             "transform-gpu transition-transform duration-300",
             open ? "translate-x-0" : "translate-x-full",
           ].join(" ")}>
@@ -92,16 +92,14 @@ export default function Navbar() {
               Our outlets
             </a>
             <a
-              href='#order'
-              className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
-              onClick={() => setOpen(false)}>
-              Order
-            </a>
-            <a
               href='#menu'
               className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
               onClick={() => setOpen(false)}>
               Menu
+            </a>
+            <a
+              href='#order' className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
+              onClick={() => setOpen(false)}> Order
             </a>
             <a
               href='#contact'

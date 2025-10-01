@@ -2,7 +2,7 @@
 
 export default function Sale() {
   return (
-    <section id='Sale' className='w-full max-h-110 bg-[#ff721b]'>
+    <section id='Sale' className='w-full max-h-110 mt-10 bg-[#ff721b]'>
       <div className='relative max-w-7xl mx-auto px-4 py-10 lg:py-0 lg:px-20'>
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-0'>
           {/* Text block */}

@@ -15,8 +15,8 @@ export default function Hot() {
   const start = page * PAGE_SIZE;
   const pageItems = items.slice(start, start + PAGE_SIZE);
 
-  const prev = () => setPage(p => (p === 0 ? totalPages - 1 : p - 1));
-  const next = () => setPage(p => (p === totalPages - 1 ? 0 : p + 1));
+  // const prev = () => setPage(p => (p === 0 ? totalPages - 1 : p - 1));
+  // const next = () => setPage(p => (p === totalPages - 1 ? 0 : p + 1));
 
   if (!items.length) {
     return (
@@ -38,7 +38,7 @@ export default function Hot() {
         LOCALLY SOURCED, ORGANIC INGREDIENTS FOR A FRESH AND ECO-FRIENDLY EXPERIENCE
       </p>
 
-      <div className="relative">
+      {/* <div className="relative">
         <button
           onClick={prev}
           className="hidden md:flex absolute -left-20 top-1/2 -translate-y-1/2 
@@ -46,7 +46,7 @@ export default function Hot() {
           aria-label="prev"
         >
           ←
-        </button>
+        </button> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {pageItems.map((it) => (
@@ -54,16 +54,16 @@ export default function Hot() {
           ))}
         </div>
 
-        <button
+        {/* <button
           onClick={next}
           className="hidden md:flex absolute -right-20 top-1/2 -translate-y-1/2 
                      w-15 h-15 rounded-full bg-white/95 shadow items-center justify-center cursor-pointer"
           aria-label="next"
         >
           →
-        </button>
+        </button> */}
 
-        <div className="mt-8 flex items-center justify-center gap-2">
+        {/* <div className="mt-8 flex items-center justify-center gap-2">
           {Array.from({ length: totalPages }).map((_, i) => (
             <button
               key={i}
@@ -74,13 +74,14 @@ export default function Hot() {
               } transition-all`}
             />
           ))}
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </section>
   );
 }
 
 function HotCard({ title, price, img }) {
+  const backendImgUrl = `https://burger-be-production.up.railway.app/images${img}`;
   return (
     <article
       className="
@@ -100,7 +101,7 @@ function HotCard({ title, price, img }) {
 
       <div className="flex justify-center mb-6 img-shadow">
         <img
-          src={img}
+          src={backendImgUrl}
           alt={title}
           width={300}
           height={220}
