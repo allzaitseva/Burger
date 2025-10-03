@@ -27,14 +27,22 @@ export default function About() {
             Extensive Selection Of Burgers Including Classic, Gourmet,
             Plant-Based, And Fully Customizable Options.
           </p>
-          <div
-            href='https://www.instagram.com'
-            className='flex mt-10 gap-3 cursor-pointer w-[100px]'>
-            <img src='igLogo.svg' alt='Instagram' className='h-[30px] w-[30px]' />
-            <p className='text-[18px] underline text-white/90'>Share</p>
+          <div className='flex mt-10 gap-3 cursor-pointer w-[100px]'>
+            <img
+              src='igLogo.svg'
+              alt='Instagram'
+              className='h-[30px] w-[30px]'
+            />
+            <a
+              href='https://www.instagram.com'
+              target='_blank'
+              rel='noopener noreferrer'>
+              <p className='text-[18px] underline text-white/90'>Share</p>
+            </a>
           </div>
           {/* Image block */}
-          <div className='relative h-[200px] w-[300px] mx-auto bg-gradient-to-t from-[#f15c3f] to-[#ffc08f]/50 rounded-2xl mt-25 
+          <div
+            className='relative h-[200px] w-[300px] mx-auto bg-gradient-to-t from-[#f15c3f] to-[#ffc08f]/50 rounded-2xl mt-25 
           lg:absolute lg:h-[250px] lg:w-[350px] lg:-mt-80 lg:right-10 xl:right-30 2xl:right-72 '>
             <img
               src='burgerGirl.png'

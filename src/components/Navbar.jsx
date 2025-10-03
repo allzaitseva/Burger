@@ -31,9 +31,7 @@ export default function Navbar() {
           <a href='#outlets' className='hover:text-red-700'>
             Our outlets
           </a>
-          {/* <Link to="/menu" className="hover:text-amber-500">Menu</Link> */}
-          <a href='#menu' className='hover:text-amber-950'>
-            Menu
+          <a href='/menu' target='_blank' rel='noopener noreferrer' className='hover:text-amber-950'> Menu
           </a>
           <a href='#contact' className='hover:text-amber-300'>
             Contact
@@ -92,14 +90,17 @@ export default function Navbar() {
               Our outlets
             </a>
             <a
-              href='#menu'
+              href='/menu'
               className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
               onClick={() => setOpen(false)}>
               Menu
             </a>
             <a
-              href='#order' className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
-              onClick={() => setOpen(false)}> Order
+              href='#order'
+              className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
+              onClick={() => setOpen(false)}>
+              {" "}
+              Order
             </a>
             <a
               href='#contact'

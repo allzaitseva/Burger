@@ -1,10 +1,7 @@
-
-// src/services/hotService.js
-
 const API_URL = 'https://burger-be-production.up.railway.app/get-burgers';
 
 class HotService {
-  // In the future, this will use fetch(API_URL) and parse the response
+
   async getHotItems() {
     try {
       const response = await fetch(API_URL);
@@ -19,3 +16,4 @@ class HotService {
 }
 
 export const hotService = new HotService();
+

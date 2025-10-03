@@ -25,7 +25,9 @@ export default function Sale() {
             </p>
 
             <a
-              href='#order'
+              href='/menu'
+              target='_blank'
+              rel='noopener noreferrer'
               className='mt-6 inline-flex items-center justify-center w-full max-w-[220px] md:max-w-[260px] rounded-2xl bg-white text-[#F78E1E] font-bold px-6 py-3 md:py-4 text-lg md:text-xl lg:text-2xl z-10 shadow-md hover:shadow-lg transition tracking-wide'>
               Order Now
             </a>
