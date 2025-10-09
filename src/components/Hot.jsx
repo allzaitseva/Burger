@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { hotService } from "../services/hotService";
+import { getEurToCzk } from "../ratesApi";
+import AddToCart from "../AddToCart";
 
 const PAGE_SIZE = 4;
 const FAV_KEY = "fav-burgers";
@@ -21,9 +23,14 @@ export default function Hot() {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(0);
   const [favs, setFavs] = useState(() => loadFavs());
+  const [eurCzk, setEurCzk] = useState(null);
 
   useEffect(() => {
     hotService.getHotItems().then(setItems);
+  }, []);
+
+  useEffect(() => {
+    getEurToCzk().then(setEurCzk);
   }, []);
 
   const toggleFav = (id) => {
@@ -64,7 +71,7 @@ export default function Hot() {
   }
 
   return (
-    <section id='hot' className='max-w-6xl mx-auto px-4 sm:px-6 py-20'>
+    <section id='hot' className='max-w-6xl mx-auto px-4 sm:px-6 -mt-10 mb-20'>
       <h2 className='text-2xl sm:text-3xl font-extrabold mb-3 text-white text-center'>
         — HOT ITEMS —
       </h2>
@@ -81,6 +88,7 @@ export default function Hot() {
             title={it.title}
             price={it.price}
             img={it.img}
+            eurCzk={eurCzk}
             isFavourite={it.isFavourite}
             onToggle={() => toggleFav(it.id)}
           />
@@ -90,17 +98,40 @@ export default function Hot() {
   );
 }
 
-function HotCard({ id, title, price, img, isFavourite, onToggle }) {
-  const backendImgUrl =
-    `https://burger-be-production.up.railway.app/images${img}`;
+function HotCard({ id, title, price, img, eurCzk, isFavourite, onToggle }) {
+  const backendImgUrl = `https://burger-be-production.up.railway.app/images${img}`;
+  // console.log("IMG:", { id, title, img, url: backendImgUrl });
+
+  function roundToTenUp(v) {
+    return Math.ceil(v / 10) * 10;
+  }
+
+  const priceEur = Number(price);
+  const priceCzk =
+    eurCzk && Number.isFinite(priceEur) ? Math.ceil(priceEur * eurCzk) : null;
+
+  const fmtCZK = (v) =>
+    new Intl.NumberFormat("cs-CZ", {
+      style: "currency",
+      currency: "CZK",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(roundToTenUp(v));
+
+  const fmtEUR = (v) =>
+    new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+    }).format(v);
+
   return (
     <article
       className='
         group relative rounded-3xl bg-[#F78E1E] text-white p-6 pt-8
         shadow-[0_20px_40px_rgba(247,142,30,0.35)]
-        transition-transform duration-300 hover:-translate-y-1
+        transition-transform duration-1000 hover:-translate-y-1
       '>
-      <div className="absolute top-4 right-4 flex items-center">
+      <div className='absolute top-4 right-4 flex items-center'>
         <button
           onClick={onToggle}
           className='w-8 h-8 rounded-full/2 text-white/90 hover:text-white cursor-pointer'
@@ -116,7 +147,9 @@ function HotCard({ id, title, price, img, isFavourite, onToggle }) {
             />
           </svg>
         </button>
-        <span className="text-white text-xs font-bold select-none -ml-1">{isFavourite ? 1 : ""}</span>
+        <span className='text-white text-xs font-bold select-none -ml-1'>
+          {isFavourite ? 1 : ""}
+        </span>
       </div>
 
       <div className='flex justify-center mb-6 img-shadow'>
@@ -134,15 +167,14 @@ function HotCard({ id, title, price, img, isFavourite, onToggle }) {
       <h3 className='font-semibold text-lg mb-3'>{title}</h3>
 
       <div className='flex items-center justify-between'>
-        <span className='font-semibold'>€{price}</span>
-        <button className='inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/15 hover:bg-white/25 cursor-pointer'>
-          <svg viewBox='0 0 24 24' className='w-5 h-5 fill-none stroke-current'>
-            <path d='M6 6h15l-2 9H7L6 6z' strokeWidth='1.5' />
-            <circle cx='9' cy='20' r='1' />
-            <circle cx='18' cy='20' r='1' />
-          </svg>
-        </button>
+        <div className='flex flex-col leading-tight'>
+          <span className='font-semibold'>{fmtEUR(priceEur)}</span>
+          {priceCzk && (
+            <span className='text-white/80 text-sm'>{fmtCZK(priceCzk)}</span>
+          )}
+        </div>
       </div>
+      <AddToCart id={id} title={title} price={price} img={img} openOnAdd />
     </article>
   );
 }

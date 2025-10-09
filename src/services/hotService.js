@@ -16,4 +16,3 @@ class HotService {
 }
 
 export const hotService = new HotService();
-

@@ -1,8 +1,8 @@
 /** @format */
-
 import { useEffect, useState } from "react";
+import { CartButton } from "./CartButton";
 
-export default function Navbar() {
+export default function Navbar({ className = "" }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -11,7 +11,8 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className='relative max-w-6xl mx-auto px-4 sm:px-6 pt-6'>
+    <header
+      className={`relative max-w-6xl mx-auto px-4 sm:px-6 pt-6 ${className}`}>
       <div className='flex items-center justify-between'>
         <a
           href='#'
@@ -19,33 +20,46 @@ export default function Navbar() {
           <img
             src='/burgerIcon.svg'
             alt='logo'
-            className='img-shadow w-8 h-8 md:w-10 md:h-10'
+            className='drop-shadow-lg w-10 h-10 md:w-10 md:h-10'
           />
           <span>BURGER</span>
         </a>
 
+        {/* center nav (desktop) */}
         <nav className='text-shadow-lg hidden md:flex absolute z-10 left-1/2 -translate-x-1/2 top-6 gap-10 text-white font-bold'>
-          <a href='#home' className='hover:text-green-700'>
+          <a href='/' className='hover:text-green-700'>
             Home
           </a>
           <a href='#outlets' className='hover:text-red-700'>
             Our outlets
           </a>
-          <a href='/menu' target='_blank' rel='noopener noreferrer' className='hover:text-amber-950'> Menu
+          <a
+            href='/menu'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='hover:text-amber-950'>
+            Menu
           </a>
           <a href='#contact' className='hover:text-amber-300'>
             Contact
           </a>
         </nav>
 
-        <button
-          onClick={() => setOpen(true)}
-          aria-label='Open menu'
-          className='md:hidden inline-flex w-10 h-10 items-center justify-center cursor-pointer'>
-          <img src='/burgerMenu.svg' alt='menu' className='w-6 h-6' />
-        </button>
+        {/* right controls */}
+        <div className='flex items-center gap-3'>
+          <div className='hidden md:block'>
+            <CartButton />
+          </div>
+          <button
+            onClick={() => setOpen(true)}
+            aria-label='Open menu'
+            className='md:hidden inline-flex w-10 h-10 items-center justify-center cursor-pointer'>
+            <img src='/burgerMenu.svg' alt='menu' className='w-6 h-6' />
+          </button>
+        </div>
       </div>
 
+      {/* mobile drawer */}
       <div
         className={[
           "fixed inset-0 z-50 md:hidden",
@@ -61,53 +75,57 @@ export default function Navbar() {
             open ? "opacity-100" : "opacity-0",
           ].join(" ")}
         />
-
         <aside
           className={[
-            "absolute inset-y-0 right-0 w-72 max-w-[85%] h-[50%] bg-[#FF9131] shadow-xl rounded-md",
+            "absolute inset-y-0 right-0 w-72 max-w-[70%] h-[55%] bg-[#FF9131] shadow-xl rounded-md",
             "transform-gpu transition-transform duration-300",
             open ? "translate-x-0" : "translate-x-full",
           ].join(" ")}>
-          <div className='flex items-center justify-end px-5 py-4 '>
+          <div className='flex items-center justify-between px-5 py-4'>
             <button
               onClick={() => setOpen(false)}
               aria-label='Close'
-              className='w-9 h-9 rounded-md hover:bg-[#FBC08B] cursor-pointer'>
+              className='w-9 h-9 rounded-md hover:bg-white/15 text-white cursor-pointer ml-50'>
               ✕
             </button>
           </div>
-          <nav className='flex flex-col p-5 text-slate-800 text-lg font-bold'>
+
+          <nav className='flex flex-col p-5 text-white text-lg font-bold gap-1'>
             <a
               href='#home'
-              className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
+              className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
               Home
             </a>
             <a
               href='#outlets'
-              className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
+              className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
               Our outlets
             </a>
             <a
               href='/menu'
-              className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
+              className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
               Menu
             </a>
             <a
               href='#order'
-              className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
+              className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
-              {" "}
               Order
             </a>
             <a
               href='#contact'
-              className='py-3 px-2 hover:bg-[#FBC08B] rounded-md'
+              className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
               Contact
             </a>
+
+            {/* cart button in mobile */}
+            <div className='pt-2 ml-50'>
+              <CartButton />
+            </div>
           </nav>
         </aside>
       </div>

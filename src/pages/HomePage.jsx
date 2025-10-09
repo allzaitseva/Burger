@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Hot from "../components/Hot";
@@ -17,19 +16,19 @@ export default function HomePage() {
           src='form-bg.png'
           alt='form'
           className='absolute z-0 right-0 
-        lg:w-180 lg:h-175 
-        md:w-100 md:h-155 
-        w-65 h-200'
+        lg:w-180 lg:h-155 
+        md:w-100 md:h-150 
+        sm:w-90 sm:h-190
+        w-65 h-170'
         />
       </div>
-
       <Navbar />
       <Hero />
       <Hot />
       <Sale />
       <About />
 
-      <footer id="contact" className='w-full h-full mt-20 bg-[#f15c3f] p-5'>
+      <footer id='contact' className='w-full h-full mt-20 bg-[#f15c3f] p-5'>
         <div className='static lg:flex lg:px-10 lg:justify-center xl:gap-10'>
           <div className='w-full lg:w-[400px] lg:-ml-25 xl:-ml-30'>
             <a
@@ -70,7 +69,9 @@ export default function HomePage() {
                 {" "}
                 <a href='#hot'>Hot Items</a>
               </li>
-              <li><a href="#About">About</a></li>
+              <li>
+                <a href='#About'>About</a>
+              </li>
             </ul>
           </div>
 
@@ -130,11 +131,14 @@ function EmailPostForm() {
     e.preventDefault();
     setStatus("Sending...");
     try {
-      const response = await fetch("https://your-backend-url/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://burger-be-production.up.railway.app/news_subscribe",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
       if (response.ok) {
         setStatus("Subscribed!");
         setEmail("");

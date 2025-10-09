@@ -8,7 +8,7 @@ export default function Footer() {
     e.preventDefault();
     setStatus("Sending...");
     try {
-      const response = await fetch("https://backend-url/subscribe", {
+      const response = await fetch("https://burger-be-production.up.railway.app/news_subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
