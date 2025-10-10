@@ -15,7 +15,7 @@ export default function Navbar({ className = "" }) {
       className={`relative max-w-6xl mx-auto px-4 sm:px-6 pt-6 ${className}`}>
       <div className='flex items-center justify-between'>
         <a
-          href='#'
+          href='/'
           className='text-shadow-lg flex items-center gap-2 font-black tracking-wide text-white'>
           <img
             src='/burgerIcon.svg'
@@ -30,12 +30,12 @@ export default function Navbar({ className = "" }) {
           <a href='/' className='hover:text-green-700'>
             Home
           </a>
-          <a href='#outlets' className='hover:text-red-700'>
+          <a href='/outlets' className='hover:text-red-700'>
             Our outlets
           </a>
           <a
             href='/menu'
-            target='_blank'
+            //target='_blank'
             rel='noopener noreferrer'
             className='hover:text-amber-950'>
             Menu
@@ -85,7 +85,7 @@ export default function Navbar({ className = "" }) {
             <button
               onClick={() => setOpen(false)}
               aria-label='Close'
-              className='w-9 h-9 rounded-md hover:bg-white/15 text-white cursor-pointer ml-50'>
+              className='w-9 h-9 rounded-md hover:bg-white/15 text-white cursor-pointer ml-45'>
               ✕
             </button>
           </div>
@@ -123,7 +123,7 @@ export default function Navbar({ className = "" }) {
             </a>
 
             {/* cart button in mobile */}
-            <div className='pt-2 ml-50'>
+            <div className='pt-2 ml-45'>
               <CartButton />
             </div>
           </nav>

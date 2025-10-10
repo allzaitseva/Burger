@@ -13,7 +13,6 @@ import {
   clear,
 } from "../cartSlice";
 
-/** Мемо-строка корзины: хуки вызываются на верхнем уровне компонента */
 const CartItem = React.memo(function CartItem({ id, title, price, qty, img, eurCzk }) {
   const dispatch = useDispatch();
 
@@ -61,7 +60,6 @@ export function CartButton({ eurCzk }) {
   const items = useSelector(selectCartItems);
   const subtotal = useSelector(selectTotalEur);
 
-  // мемо-подсчёты
   const count = useMemo(() => items.reduce((n, i) => n + i.qty, 0), [items]);
   const totalCZK = useMemo(() => (eurCzk ? Math.round(subtotal * eurCzk) : null), [eurCzk, subtotal]);
 
@@ -145,7 +143,7 @@ export function CartButton({ eurCzk }) {
   );
 
   return (
-    <div className="relative z-[60]">
+    <div className="relative z-60">
       <button
         type="button"
         className="relative inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 hover:bg-white/25 transition-colors"

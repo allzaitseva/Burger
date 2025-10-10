@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { hotService } from "../services/hotService";
 import { getEurToCzk } from "../ratesApi";
-import AddToCart from "../AddToCart";
+import AddToCart from "./AddToCart";
 
 const PAGE_SIZE = 4;
 const FAV_KEY = "fav-burgers";
@@ -21,7 +21,7 @@ const saveFavs = (set) => {
 
 export default function Hot() {
   const [items, setItems] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page] = useState(0);
   const [favs, setFavs] = useState(() => loadFavs());
   const [eurCzk, setEurCzk] = useState(null);
 

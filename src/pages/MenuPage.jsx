@@ -4,8 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import { hotService } from "../services/hotService";
 import { useGetRatesQuery } from "../ratesApi"; // RTK Query (redux)
 
+import AddToCart from "../components/AddToCart";
 import Navbar from "../components/Navbar";
-import AddToCart from "../AddToCart";
+import Footer from "../components/Footer";
 
 const PAGE_SIZE = 15;
 const FAV_KEY = "fav-burgers";
@@ -84,6 +85,7 @@ export default function MenuPage() {
           </div>
         )}
       </section>
+      <Footer/>
     </main>
   );
 }
@@ -94,7 +96,7 @@ function HotCard({ id, title, price, img, eurCzk, isFavourite, onToggle }) {
   }`;
   console.log("IMG:", { id, title, img, url: backendImgUrl });
 
-  const roundToTenUp = (v) => Math.ceil(v / 10) * 10; // 238→240
+  const roundToTenUp = (v) => Math.ceil(v / 10) * 10; // 238->240
   const priceEur = Number(price);
   const priceCzk =
     eurCzk && Number.isFinite(priceEur)

@@ -27,5 +27,3 @@ store.subscribe(() => {
     saveCart(cart);
   }, 200);
 });
-
-
