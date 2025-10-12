@@ -77,7 +77,7 @@ export default function Navbar({ className = "" }) {
         />
         <aside
           className={[
-            "absolute inset-y-0 right-0 w-72 max-w-[70%] h-[50%] bg-[#FF9131] shadow-xl rounded-md",
+            "absolute inset-y-0 right-0 w-72 max-w-[70%] h-auto bg-[#FF9131] shadow-xl rounded-md",
             "transform-gpu transition-transform duration-300",
             open ? "translate-x-0" : "translate-x-full",
           ].join(" ")}>

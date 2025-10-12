@@ -1,5 +1,6 @@
 /** @format */
 import { Routes, Route, Outlet } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 import HomePage from "./pages/HomePage";
 import MenuPage from "./pages/MenuPage";
 import OutletsPage from "./pages/OutletsPage";
@@ -14,6 +15,7 @@ L.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl: icon2xUrl, shadowUrl });
 function Layout() {
   return (
     <>
+      <Toaster position="top-center" />
       <Outlet />
     </>
   );
@@ -28,5 +30,6 @@ export default function App() {
         <Route path='/outlets' element={<OutletsPage />} />
       </Route>
     </Routes>
+    
   );
 }
