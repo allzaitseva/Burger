@@ -1,12 +1,77 @@
-# React + Vite
+# 🍔 Burger Shop Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive burger shop web application built with React, Vite, and Tailwind CSS. Users can browse hot burgers, add items to cart, mark favorites, and view prices in EUR and CZK.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Browse hot burger items with images and details
+- Add burgers to cart and view cart summary
+- Mark burgers as favorites (persisted in local storage)
+- Dynamic price conversion (EUR to CZK)
+- Responsive design for desktop and mobile
+- Modern UI with Tailwind CSS
 
-## Expanding the ESLint configuration
+## Screenshots
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+_Add screenshots here if available_
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or newer recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+	```sh
+	git clone https://github.com/allzaitseva/Burger.git
+	cd Burger
+	```
+2. Install dependencies:
+	```sh
+	npm install
+	# or
+	yarn install
+	```
+
+### Running the App
+
+Start the development server:
+```sh
+npm run dev
+# or
+yarn dev
+```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Project Structure
+
+- `src/components/` — React components (Hot, Navbar, Footer, AddToCart, etc.)
+- `src/pages/` — Page components (HomePage, MenuPage, OutletsPage)
+- `src/services/` — API service modules
+- `src/utils/` — Utility functions (localStorage helpers)
+- `public/` — Static assets (images, SVGs)
+
+## Tech Stack
+
+- React
+- Vite
+- Tailwind CSS
+- Redux Toolkit (for cart and currency state)
+- ESLint & PostCSS
+
+## API
+
+- Hot burger images and data are fetched from a backend (see `hotService.js`)
+- Currency rates fetched from an external API (see `ratesApi.js`)
+
+## Credits
+
+- Developed by [allzaitseva](https://github.com/allzaitseva)
+- Images and assets: see `public/` folder
+
+## License
+
+MIT
