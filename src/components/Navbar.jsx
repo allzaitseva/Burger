@@ -77,7 +77,7 @@ export default function Navbar({ className = "" }) {
         />
         <aside
           className={[
-            "absolute inset-y-0 right-0 w-72 max-w-[70%] h-[55%] bg-[#FF9131] shadow-xl rounded-md",
+            "absolute inset-y-0 right-0 w-72 max-w-[70%] h-[50%] bg-[#FF9131] shadow-xl rounded-md",
             "transform-gpu transition-transform duration-300",
             open ? "translate-x-0" : "translate-x-full",
           ].join(" ")}>
@@ -92,13 +92,13 @@ export default function Navbar({ className = "" }) {
 
           <nav className='flex flex-col p-5 text-white text-lg font-bold gap-1'>
             <a
-              href='#home'
+              href='/'
               className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
               Home
             </a>
             <a
-              href='#outlets'
+              href='/outlets'
               className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
               Our outlets
@@ -109,12 +109,12 @@ export default function Navbar({ className = "" }) {
               onClick={() => setOpen(false)}>
               Menu
             </a>
-            <a
-              href='#order'
+            {/* <a
+              href='/menu'
               className='py-3 px-2 hover:bg-white/15 rounded-md'
               onClick={() => setOpen(false)}>
               Order
-            </a>
+            </a> */}
             <a
               href='#contact'
               className='py-3 px-2 hover:bg-white/15 rounded-md'

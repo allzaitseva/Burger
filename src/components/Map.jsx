@@ -7,8 +7,8 @@ const OUTLETS = [
   {
     id: "o1",
     name: "Old Town Outlet",
-    lat: 50.0830,
-    lon: 14.4160,
+    lat: 50.083,
+    lon: 14.416,
     desc: "Staroměstské náměstí, 110 00, Staré Město, Praha 1.",
   },
   {
@@ -20,13 +20,13 @@ const OUTLETS = [
   },
 ];
 
-  const outletIcon = L.divIcon({
-    html: "📍",
-    className: "text-3xl",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
-    popupAnchor: [0, -25],
-  });
+const outletIcon = L.divIcon({
+  html: "📍",
+  className: "text-3xl",
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+  popupAnchor: [0, -25],
+});
 
 const overpassQuery = `
 [out:json][timeout:25];
@@ -83,28 +83,40 @@ export default function Map() {
   }, []);
 
   return (
-    <div className='relative w-full h-120 mt-15 px-10 lg:px-16 xl:px-32 2xl:px-72'>
-      <MapContainer
-        center={center}
-        zoom={12}
-        className="z-1 rounded-xl size-full">
-        <TileLayer
-          attribution='&copy; OpenStreetMap'
-          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        />
+    <div className='h-160'>
+      <div className='relative w-full h-120 mt-15 px-10 lg:px-16 xl:px-32 2xl:px-72'>
+        <MapContainer
+          center={center}
+          zoom={12}
+          className='z-1 rounded-xl size-full'>
+          <TileLayer
+            attribution='&copy; OpenStreetMap'
+            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          />
 
-        {/* My outlets */}
-        {OUTLETS.map((o) => (
-          <Marker key={o.id} position={[o.lat, o.lon]} icon={outletIcon}>
-            <Popup>
-              <strong>{o.name}</strong>
-              <br />
-              {o.desc || "Outlet"}
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-      {loading && <div className='mt-7 text-white/80'>Loading outlets…</div>}
+          {OUTLETS.map((o) => (
+            <Marker key={o.id} position={[o.lat, o.lon]} icon={outletIcon}>
+              <Popup>
+                <strong>{o.name}</strong>
+                <br />
+                {o.desc || "Outlet"}
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+        {loading && (
+          <div className='absolute mt-5 text-white/80'>Loading outlets…</div>
+        )}
+
+        <div className='text-white mt-15'>
+          {OUTLETS.map((outlet) => (
+            <div key={outlet.id} className='mb-4'>
+              <h3 className='font-bold text-lg'>{outlet.name}</h3>
+              <p className='text-sm text-white/85'>{outlet.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
