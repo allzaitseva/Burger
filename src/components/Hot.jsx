@@ -130,7 +130,7 @@ function HotCard({ id, title, price, img, eurCzk, isFavourite, onToggle }) {
       group relative rounded-3xl bg-[#F78E1E] text-white p-6 pt-8
       shadow-[0_20px_40px_rgba(247,142,30,0.35)]
       transition-transform duration-1000 hover:-translate-y-1 z-3
-      flex flex-col   /* 👈 ВАЖНО: карточка — колонка */
+      flex flex-col
     '>
       {/* Favourite */}
       <div className='absolute top-4 right-4 flex items-center'>
